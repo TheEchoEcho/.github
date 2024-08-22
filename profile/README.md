@@ -56,6 +56,13 @@ https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/44
 6. **收益的分配**
     - **分账**：服务完成后，平台根据事先设定的比例分配收益，确保工会、Alice和平台各自的收益部分按约定分配。
 
+### 3.2.1 `zk proof`生成流程
+- 在Bob的本地生成 `zk proof`后，发送给Alice，无需生成可验证合约，只需Alice验证即可。
+- 输入：用户坐标(x1, y1)，服务提供者坐标(x2, y2)，其中坐标有7位小数，前端需要将`坐标 * 1e7`后传入给zk电路。
+    - 计算： $d = (x1 - x2)^2 + (y1 - y2)^2$ ，电路中同时要包括项目方对(x1, y1)的签名，私钥生成方式使用`(EchoEchoSigner, EchoEChoSignerPrivateKey) = makeAddrAndKey("EchoEchoSigner");`。
+- 输出：距离d
+
+
 
 # 四. 项目团队
 - DylanJinx
