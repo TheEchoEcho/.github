@@ -1,5 +1,9 @@
 # 一. 项目概述
-EchoEcho：一个基于NFT的线下服务平台。`service provider`可以在他想接单时，在平台更新他的地理坐标，`consumer`可以通过查看他附近NFT找到他需要的服务。
+欢迎来到EchoEcho——一触即达的线下服务！通过融合NFT和零知识证明，我们为您打造一个多彩多姿的服务世界。在这里，服务提供者可以将自己的才艺变成一个个独特的NFT，并更新自己的坐标。而您，只需轻点界面，就能发现附近的服务宝藏，无论是健身教练、文化导游还是线下陪玩，应有尽有！
+
+服务提供者发行首个服务NFT到设置那些诱人的试用政策，每一步都简单易行。而且，用户不必担心隐私——我们的平台能在不透露用户精确位置的情况下，验证服务的可行性。更棒的是，所有的交易都通过我们安全的智能合约来管理，如果决定在试用期内撤回，退款也是轻而易举的。
+
+使用EchoEcho，享受前所未有的灵活性和安全，让我们一起，用区块链技术重新定义个性化服务体验吧！
 
 # 二. 技术栈
 - `smart contract`：`Solidity`
@@ -30,9 +34,9 @@ EchoEcho：一个基于NFT的线下服务平台。`service provider`可以在他
     - **用户搜索**：用户Bob想找私教，那么可以通过设置搜索条件（如距离、私教等）来找到符合条件的服务提供者。
 
 4. **确认订单前的三种状态**
-    - **consumer -> I Want**：Bob在找到Alice上架的NFT后，如果他想购买需要先点击`I Want`，平台会基于Bob的地理位置在Bob的本地生成一个`distance proof`，Alice可以在不知道Bob的具体位置的情况下知道他们之间距离多远，并且可以通过`distance proof`来验证这个距离是否是真实的；
-    - **provider -> agree**：Alice查看了距离后，如果觉得可以接单，那么她就可以点击`agree`，她也可以进入`EchoEcho-chat`和Bob了聊天：![alice_agree](./imgs/alice_agree.png)
-    - **consumer -> Buy Now**：当Alice `agree`之后，Bob就可以点击`Buy Now`，可以在Services中看到他已经买到服务。![bob_buy](./imgs/bob_buy.png)
+    - **consumer -> `I Want`**：Bob在找到Alice上架的NFT后，如果他想购买需要先点击`I Want`，平台会基于Bob的地理位置在Bob的本地生成一个`distance proof`，Alice可以在不知道Bob的具体位置的情况下知道他们之间距离多远，并且可以通过`distance proof`来验证这个距离是否是真实的；
+    - **provider -> `agree`**：Alice查看了距离后，如果觉得可以接单，那么她就可以点击`agree`，她也可以进入`EchoEcho-chat`和Bob了聊天：![alice_agree](./imgs/alice_agree.png)
+    - **consumer -> `Buy Now`**：当Alice `agree`之后，Bob就可以点击`Buy Now`，可以在Services中看到他已经买到服务。![bob_buy](./imgs/bob_buy.png)
 
 5. **服务的执行和金钱托管**
     - **购买NFT**：Bob购买Alice的服务后，支付的ETH将被托管在平台的智能合约中；
@@ -48,6 +52,8 @@ EchoEcho：一个基于NFT的线下服务平台。`service provider`可以在他
 ### 3.2.2 cancel order
 - Bob可以在试用期间取消订单，那么平台会退款一部分金额给Bob(`amount = TrialPriceBP * (Price - fee)`)，Alice获得的金额为`Price - amount`。
 
+### chat
+![chat_swim](./imgs/chat_swim.png)
 
 # 四. 项目团队
 - DylanJinx
