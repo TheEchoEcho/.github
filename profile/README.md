@@ -13,6 +13,8 @@ EchoEcho：一个基于NFT的线下服务平台。`service provider`可以在他
 
 2. **NFT的发行和上架（list_offline_service）**
     - **发行NFT**：
+        - Maria是一位历史专业的学生，她痴迷于意大利历史地标和文化遗址，她可以凭借她艺术史背景和流利的意大利语，英语和印地语，提供独特的体验，将学习与休闲相结合，使每次旅行都令人难忘，那么她就可以将[Maria.json](https://github.com/TheEchoEcho/EchoEcho_contract/blob/main/IPFS_files/jsons/Maria_cultural_tour_guide.json)的IPFS CID值传到平台mint一个新的NFT。
+        - Sophias是一位娱乐陪玩，不论是棋盘还是角色扮演游戏，她都能给出精妙的游戏技巧和美妙的游戏体验，那么她就可以将[Sophias.json](https://github.com/TheEchoEcho/EchoEcho_contract/blob/main/IPFS_files/jsons/Sophia_board&role-playing_game_companion.json)的IPFS CID值传到平台mint一个新的NFT。
         - Alice是一位经验丰富的私人健身教练，她希望不受地理位置的约束，每去一个新城市或国家时，都可以为当地人提供私教服务，那么她就可以将[Alice.json](https://github.com/TheEchoEcho/EchoEcho_contract/blob/main/IPFS_files/jsons/Alice_personal_fitness_trainer.json)的IPFS CID值传到平台mint一个新的NFT。![alice_mint_nft1](./imgs/alice_mint_nft1.png)
     - **定价和服务条款**：mint出的NFT可以上架到市场上供用户们选择，上架时需要填写一些必要的信息：![alice_list_service](./imgs/alice_list_service.png)
 
