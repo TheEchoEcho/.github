@@ -1,44 +1,20 @@
 # 一. 项目概述
-NFT的价格主要受市场的波动以及特征稀有性的影响，最稀有的NFT往往会产生很高的溢价。
-
-比如：Bored Ape Yacht Club系列，`tokenId = 4458`因其包含`Trippy`和`Grin Gold Grill`这两个稀缺特征，使其价格达到`1420ETH`。
-https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/4458
-
-但是随着熊市的到来，NFT市场已不如鼎盛时期那般火热，初出茅庐的NFT艺术家们想通过出版NFT展现自己才华的可能性也越来越小。
-
-我们将利用这些`Traits`开发出一个不一样的`NFTMarket`，即基于NFTMarket的社交平台——`EchoEcho`。
-
-用户与用户之间也可以在不暴露自己具体位置的前提下，知道自己与对方的距离。
-
-下面将通过contract address、Traits来获取范围`d`内有哪些用户的行为简称为”Echo"。
+EchoEcho：一个基于NFT的线下服务平台。`service provider`可以在他想接单时，在平台更新他的地理坐标，`consumer`可以通过查看他附近NFT找到他需要的服务。
 
 # 二. 技术栈
-- 合约：`Solidity` 或 `Cairo`
+- 合约：`Solidity`
 - 前端：`Next.js`
-- `zk proof`：`circom + snark.js` 或 `Halo2`
+- `zk proof`：`circom + snark.js`
 
 # 三. 流程详情
-
-## 3.1. 无服务属性NFT流程
 1. **NFTMarket平台的手续费和试用政策**
     - **手续费**：NFTMarket平台在每次NFT交易中收取1%的手续费。
-
-2. **NFT的发行和上架（list）**
-	- **发行NFT**：NFT艺术家发行一种带有情节或人设的NFT系列。
-	- **定价**：`tokenId=1`的价格设定为1 ETH。
-
-3. **用户购买**
-	- **用户购买**：用户购买了NFT后，其他用户就可以通过其特定的特征来搜索到他，并可以发起聊天。
-
-
-## 3.2. 带有线下服务属性NFT流程
-1. **NFTMarket平台的手续费和试用政策**
-    - **手续费**：NFTMarket平台在每次NFT交易中收取1%的手续费。
-    - **试用时长**：服务有一个试用期，如果在试用期内（50%的服务时长）用户选择中止服务，需要支付最低费用 （Minimum charge）。
+    - **试用时长和试用费用**：当`provider`上架他的NFT时，除了必要的信息外，还需要指定试用价格百分比（`trialPriceBP`）和试用时长百分比（`trialDurationBP`），即`consumer`在试用时长内取消订单，只需要支付试用价格即可。
 
 2. **NFT的发行和上架（list_offline_service）**
-    - **发行NFT**：工会A发行了一种提供线下陪玩的ANFT，每个ANFT代表一个具体的服务提供者（例如`tokenId=1`的服务提供者是Alice）。每个ANFT包含特定的属性，如游戏类型（王者荣耀）、性别等；工会B发行了一种提供线下按摩的BNFT，每个BNFT代表一个具体的服务提供者，每个BNFT包含特定的属性。
-    - **定价和服务条款**：`tokenId=1`的价格设定为1 ETH。工会从总收益中获得19%，服务提供者（如Alice）获得80%，其中平台的手续费为1%。服务时长为8小时，最低为0.5 ETH。
+    - **发行NFT**：
+        - Alice是一位经验丰富的私人健身教练，她希望不受地理位置的约束，每去一个新城市或国家时，都可以为当地人提供私教服务，那么她就可以将(Alice.json)[https://github.com/TheEchoEcho/EchoEcho_contract/blob/main/IPFS_files/jsons/Alice_personal_fitness_trainer.json]的IPFS CID值传到平台mint一个新的NFT。![alice_mint_nft](./imgs/alice_mint_nft.png)
+    - **定价和服务条款**：mint出的NFT可以上架到市场上供用户们选择，上架时需要填写一些必要的信息：![alice_list_service](./imgs/alice_list_service.png)
 
 3. **服务提供者的位置暴露和用户搜索**
     - **位置暴露**：服务提供者Alice在接单时需在平台上公开其地理位置，以便用户可以根据距离搜索到她。
@@ -69,30 +45,7 @@ https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/44
 - Pupil1999
 - ymjrcc
 
-## 4.1 idea提供者
-- psyljz：聊天窗口可以通过`Telegram`来做
 
-
-# 五. FAQ
-## 5.1 开发者问题
-### 5.1.1 为什么筛选的逻辑要通过`NFT Traits`以及这个社交平台为什么一定要基于`Web3.0 NFTMarket`的思路来做？
-答：
-- 首先平台唯一的获利途径是交易NFT时的手续费，这里的NFT包括象征个人身份标识的NFT，以及象征礼物属性的NFT。
-- 选择NFT的理由：我们可以看到`5.2.1`中有提到机构可以颁发NFT来确定这个用户拥有什么属性或职业，当然，如果使用DID来确定用户的职业是更加权威的办法，但是也缺少了很多可能性以及NFT图片的表示。
-- 通过去中心化模式进行的理由：主要是解决分账问题，用户可以送一些象征礼物属性的NFT给自己喜欢的用户，这类NFT也可以承载某些服务（这些服务和收款可以写入到发行方的NFT合约中）；通过无需信任的分账模式，可以促进这个生态健康的发展。
-
-
-## 5.2 用户问题
-### 5.2.1 作为一个NFT艺术家或者机构想在EchoEcho发行自己的NFT，有什么比较好的选题？
-答：下面的选题可以作为参考：
-- NFT艺术家：NFT艺术家可以发挥自己的想象来创作各种有趣的情节以及人物设定。下来以动漫《鬼灭之刃》中官配CP举例：
-	- 善逸 & 祢豆子
-	- 炭治郎 & 香奈乎
-	- 小芭内（蛇柱）& 蜜璃（恋柱）
-	- 无惨 & 太阳
-	用户可以购买上述喜欢的NFT来“Echo”或者”被Echo“。
-
-- 娱乐行业：现在有很多全职up主、主播以及陪玩，他们或多或少属于某个MCN公司或工会，下面以工会举例：一家工会可以为旗下的主播颁发一个象征身份的NFT，通过加上各种属性（如：城市等），用户可以根据：`contract address + city`的条件来“Echo”某个城市的主播或陪玩。
 
 
 
