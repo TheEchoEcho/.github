@@ -23,7 +23,7 @@ EchoEcho：一个基于NFT的线下服务平台。`service provider`可以在他
         - Trial Duration BP：试用时长（`5000 trial duration besis points = 50% of the max duration`）
         - List End Time：挂单的时间（如果Alice在一个新城市待一个月，那么这里的时间就可以选择一个月）
         - ![alice_list_service](./imgs/alice_list_service.png)
-        - 市场就可以显示出改NFT：![market_list](./imgs/market_list.png)
+        - 市场就可以显示出该NFT：![market_list](./imgs/market_list.png)
 
 3. **服务提供者的位置暴露和用户搜索**
     - **位置暴露**：Alice在接单时需在平台上公开其地理位置，以便用户可以根据距离搜索到她。
@@ -43,8 +43,8 @@ EchoEcho：一个基于NFT的线下服务平台。`service provider`可以在他
 
 ### `zk proof`生成流程
 - Bob在购买Alice的服务之前，需要向Alice提供一个证明，用以表示其在服务的提供范围之内。证明验证通过之后，才能开启后续服务步骤。证明以及验证的过程如下：
-- $Prove(coord_1, coord_2, sig, pk, distance) -> /pi$。其中coord_2为用户的当前坐标，coord_1为服务的显示坐标。该证明表示coord_2距离coord_1小于distance，并且具有项目方的签名。
-- $Verify(/pi, coord_1, sig, pk, distance) -> 1/0$。该函数输出1则表示验证通过，购买方确实在服务提供范围之内。
+- $Prove(coord_1, coord_2, sig, pk, distance) -> \pi$ 。其中coord_2为用户的当前坐标，coord_1为服务的显示坐标。该证明表示coord_2距离coord_1小于distance，并且具有项目方的签名。
+- $Verify(/pi, coord_1, sig, pk, distance) -> 1/0$ 。该函数输出1则表示验证通过，购买方确实在服务提供范围之内。
 - 由于链上验证开销较大，而且在以上流程中必要性不高，验证过程也放在链下进行。
 
 
