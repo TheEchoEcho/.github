@@ -13,7 +13,7 @@ EchoEcho：一个基于NFT的线下服务平台。`service provider`可以在他
 
 2. **NFT的发行和上架（list_offline_service）**
     - **发行NFT**：
-        - Alice是一位经验丰富的私人健身教练，她希望不受地理位置的约束，每去一个新城市或国家时，都可以为当地人提供私教服务，那么她就可以将[Alice.json](https://github.com/TheEchoEcho/EchoEcho_contract/blob/main/IPFS_files/jsons/Alice_personal_fitness_trainer.json)的IPFS CID值传到平台mint一个新的NFT。![alice_mint_nft](./imgs/alice_mint_nft.png)
+        - Alice是一位经验丰富的私人健身教练，她希望不受地理位置的约束，每去一个新城市或国家时，都可以为当地人提供私教服务，那么她就可以将[Alice.json](https://github.com/TheEchoEcho/EchoEcho_contract/blob/main/IPFS_files/jsons/Alice_personal_fitness_trainer.json)的IPFS CID值传到平台mint一个新的NFT。![alice_mint_nft1](./imgs/alice_mint_nft1.png)
     - **定价和服务条款**：mint出的NFT可以上架到市场上供用户们选择，上架时需要填写一些必要的信息：![alice_list_service](./imgs/alice_list_service.png)
 
 3. **服务提供者的位置暴露和用户搜索**
