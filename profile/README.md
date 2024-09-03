@@ -1,88 +1,61 @@
-# 一. 项目概述
-欢迎来到EchoEcho——一触即达的线下服务！通过融合NFT和零知识证明，我们为您打造一个多彩多姿的服务世界。在这里，服务提供者可以将自己的才艺变成一个个独特的NFT，并更新自己的坐标。而您，只需轻点界面，就能发现附近的服务宝藏，无论是健身教练、文化导游还是线下陪玩，应有尽有！
+# I. Project Overview
+Welcome to EchoEcho—offline services at your fingertips! By integrating NFTs and zero-knowledge proofs, we have created a vibrant world of services for you. Here, service providers can turn their skills into unique NFTs and update their coordinates. With just a simple tap on the interface, you can discover nearby service treasures, whether it’s a fitness coach, cultural tour guide, or offline companionship, we’ve got it all!
 
-服务提供者发行首个服务NFT到设置那些诱人的试用政策，每一步都简单易行。而且，用户不必担心隐私——我们的平台能在不透露用户精确位置的情况下，验证服务的可行性。更棒的是，所有的交易都通过我们安全的智能合约来管理，如果决定在试用期内撤回，退款也是轻而易举的。
+Service providers can easily issue their first service NFT and set enticing trial policies. Plus, users don’t need to worry about privacy—our platform verifies the viability of services without disclosing users' exact locations. All transactions are managed through our secure smart contracts, making refunds straightforward if you decide to withdraw during the trial period.
 
-使用EchoEcho，享受前所未有的灵活性和安全，让我们一起，用区块链技术重新定义个性化服务体验吧！
+Use EchoEcho to enjoy unprecedented flexibility and security. Let’s redefine personalized service experiences with blockchain technology together!
 
-# 二. 技术栈
-- `smart contract`：`Solidity`
-- `frontend`：`Next.js`
-- `zk proof`：`Circom + Snark.js`
+# II. Technology Stack
+- `Smart Contract`: `Solidity`
+- `Frontend`: `Next.js`
+- `zk Proof`: `Circom + Snark.js`
 
-# 三. 流程详情
-1. **NFTMarket平台的手续费和试用政策**
-    - **手续费**：NFTMarket平台在每次NFT交易中收取1%的手续费。
-    - **试用时长和试用费用**：当`provider`上架他的NFT时，除了必要的信息外，还需要指定试用价格百分比（`trialPriceBP`）和试用时长百分比（`trialDurationBP`），即`consumer`在试用时长内取消订单，只需要支付试用价格即可。
+# III. Process Details
+1. **NFTMarket Platform Fees and Trial Policies**
+   - **Fees**: NFTMarket platform charges a 1% fee on each NFT transaction.
+   - **Trial Length and Costs**: When `providers` list their NFTs, they need to specify a trial price percentage (`trialPriceBP`) and trial duration percentage (`trialDurationBP`). This means a `consumer` can cancel during the trial period and only pay the trial price.
 
-2. **NFT的发行和上架（list_offline_service）**
-    - **发行NFT**：
-        - Maria是一位历史专业的学生，她痴迷于意大利历史地标和文化遗址，她可以凭借她艺术史背景和流利的意大利语，英语和印地语，提供独特的体验，将学习与休闲相结合，使每次旅行都令人难忘，那么她就可以将[Maria.json](https://github.com/TheEchoEcho/EchoEcho_contract/blob/main/IPFS_files/jsons/Maria_cultural_tour_guide.json)的IPFS CID值传到平台mint一个新的NFT。
-        - Sophias是一位娱乐陪玩，不论是棋盘还是角色扮演游戏，她都能给出精妙的游戏技巧和美妙的游戏体验，那么她就可以将[Sophias.json](https://github.com/TheEchoEcho/EchoEcho_contract/blob/main/IPFS_files/jsons/Sophia_board&role-playing_game_companion.json)的IPFS CID值传到平台mint一个新的NFT。
-        - Alice是一位经验丰富的私人健身教练，她希望不受地理位置的约束，每去一个新城市或国家时，都可以为当地人提供私教服务，那么她就可以将[Alice.json](https://github.com/TheEchoEcho/EchoEcho_contract/blob/main/IPFS_files/jsons/Alice_personal_fitness_trainer.json)的IPFS CID值传到平台mint一个新的NFT。![alice_mint_nft1](./imgs/alice_mint_nft1.png)
-    - **定价和服务条款**：mint出的NFT可以上架到市场上供用户们选择，上架时需要填写一些必要的信息：
-        - Price：一次服务的价格（单位：ETH）
-        - Trial Price BP：试用价格（`5000 trial price besis points = 50% of the (price - fee)`）
-        - Max Duration：一次服务的时长（单位：小时）
-        - Trial Duration BP：试用时长（`5000 trial duration besis points = 50% of the max duration`）
-        - List End Time：挂单的时间（如果Alice在一个新城市待一个月，那么这里的时间就可以选择一个月）
-        - ![alice_list_service](./imgs/alice_list_service.png)
-        - 市场就可以显示出该NFT：![market_list](./imgs/market_list.png)
+2. **NFT Issuance and Listing (list_offline_service)**
+   - **Issuing NFTs**:
+     - Maria, a student majoring in history, is passionate about Italian historical landmarks and cultural sites. Combining her art history background and fluency in Italian, English, and Hindi, she can offer unique experiences that blend learning with leisure, making each trip unforgettable. Thus, she can upload the IPFS CID of [Maria.json](https://github.com/TheEchoEcho/EchoEcho_contract/blob/main/IPFS_files/jsons/Maria_cultural_tour_guide.json) to mint a new NFT.
+     - Sophia, an entertainment companion, excels in both board and role-playing games, providing exquisite game strategies and experiences. She can upload the IPFS CID of [Sophias.json](https://github.com/TheEchoEcho/EchoEcho_contract/blob/main/IPFS_files/jsons/Sophia_board&role-playing_game_companion.json) to mint a new NFT.
+     - Alice, an experienced personal fitness trainer, wants to offer her services without geographical constraints. Whenever she visits a new city or country, she can provide local personal training services by uploading the IPFS CID of [Alice.json](https://github.com/TheEchoEcho/EchoEcho_contract/blob/main/IPFS_files/jsons/Alice_personal_fitness_trainer.json) to mint a new NFT. ![alice_mint_nft1](./imgs/alice_mint_nft1.png)
+   - **Pricing and Terms of Service**: Minted NFTs can be listed on the market with necessary information:
+     - Price: Cost of one service session (unit: ETH)
+     - Trial Price BP: Trial price (`5000 trial price basis points = 50% of the (price - fee)`)
+     - Max Duration: Duration of one service session (unit: hours)
+     - Trial Duration BP: Trial duration (`5000 trial duration basis points = 50% of the max duration`)
+     - List End Time: Listing duration (if Alice is staying in a new city for a month, this can be set to one month)
+     - ![alice_list_service](./imgs/alice_list_service.png)
+     - The market displays the NFT: ![market_list](./imgs/market_list.png)
 
-3. **服务提供者的位置暴露和用户搜索**
-    - **位置暴露**：Alice在接单时需在平台上公开其地理位置，以便用户可以根据距离搜索到她。
-    - **用户搜索**：用户Bob想找私教，那么可以通过设置搜索条件（如距离、私教等）来找到符合条件的服务提供者。
+3. **Provider's Location Disclosure and User Search**
+   - **Location Disclosure**: Alice needs to disclose her geographical location on the platform when taking orders, enabling users to search for her based on distance.
+   - **User Search**: User Bob, looking for a personal trainer, can set search criteria such as distance and type of personal training to find suitable service providers.
 
-4. **确认订单前的三种状态**
-    - **consumer -> `I Want`**：Bob在找到Alice上架的NFT后，如果他想购买需要先点击`I Want`，平台会基于Bob的地理位置在Bob的本地生成一个`distance proof`，Alice可以在不知道Bob的具体位置的情况下知道他们之间距离多远，并且可以通过`distance proof`来验证这个距离是否是真实的；
-    - **provider -> `agree`**：Alice查看了距离后，如果觉得可以接单，那么她就可以点击`agree`，她也可以进入`EchoEcho-chat`和Bob了聊天：![alice_agree](./imgs/alice_agree.png)
-    - **consumer -> `Buy Now`**：当Alice `agree`之后，Bob就可以点击`Buy Now`，可以在Services中看到他已经买到服务。![bob_buy](./imgs/bob_buy.png)
+4. **Three States Before Confirming an Order**
+   - **Consumer -> `I Want`**: After finding Alice’s listed NFT, Bob can click `I Want`. The platform generates a `distance proof` based on Bob's location locally, allowing Alice to know their distance without knowing Bob's exact location and verify this distance with the `distance proof`.
+   - **Provider -> `Agree`**: If Alice feels the distance is manageable, she can click `agree` and enter `EchoEcho-chat` to chat with Bob: ![alice_agree](./imgs/alice_agree.png)
+   - **Consumer -> `Buy Now`**: Once Alice agrees, Bob can click `Buy Now`, and he can see the service he has purchased in Services. ![bob_buy](./imgs/bob_buy.png)
 
-5. **服务的执行和金钱托管**
-    - **购买NFT**：Bob购买Alice的服务后，支付的ETH将被托管在平台的智能合约中；
-    - **提款**：Alice只有在没有提供服务时取款，这是为了防止Bob在试用时长时取消订单。
+5. **Service Execution and Money Escrow**
+   - **Buying the NFT**: After Bob purchases Alice’s service, the paid ETH is held in escrow by the platform's smart contract.
+   - **Withdrawal**: Alice can only withdraw the funds if she does not provide the service, to prevent Bob from cancelling the order during the trial period.
 
-## 3.2 其它
-### 3.2.1 `zk proof`生成流程
-- Bob在购买Alice的服务之前，需要向Alice提供一个证明，用以表示其在服务的提供范围之内。证明验证通过之后，才能开启后续服务步骤。证明以及验证的过程如下：
-- $Prove(coord_1, coord_2, sig, pk, distance) -> \pi$ 。其中coord_2为用户的当前坐标，coord_1为服务的显示坐标。该证明表示coord_2距离coord_1小于distance，并且具有项目方的签名。
-- $Verify(\pi, coord_1, sig, pk, distance) -> 1/0$ 。该函数输出1则表示验证通过，购买方确实在服务提供范围之内。
-- 由于链上验证开销较大，而且在以上流程中必要性不高，验证过程也放在链下进行。
+## 3.2 Other
+### 3.2.1 `zk proof` Generation Process
+- Before purchasing Alice’s service, Bob needs to provide a proof to Alice that he is within the service delivery range. The proof and verification process are as follows:
+- $Prove(coord_1, coord_2, sig, pk, distance) -> \pi$ . Here, coord_2 is the user's current coordinates, and coord_1 is the service’s listed coordinates. This proof shows that coord_2 is within the distance from coord_1, and it is signed by the project’s authority.
+- $Verify(\pi, coord_1, sig, pk, distance) -> 1/0$ . An output of 1 indicates that the verification is successful, confirming the buyer is within the service range.
+- Due to the high cost of on-chain verification and its non-essential nature in the process outlined above, the verification is performed off-chain.
 
-### 3.2.2 cancel order
-- Bob可以在试用期间取消订单，那么平台会退款一部分金额给Bob(`amount = TrialPriceBP * (Price - fee)`)，Alice获得的金额为`Price - amount`。
+### 3.2.2 Cancel Order
+- Bob can cancel the order during the trial period, and the platform will refund part of the money to Bob (`amount = TrialPriceBP * (Price - fee)`), while Alice receives `Price - amount`.
 
-### chat
+### Chat
 ![chat_swim](./imgs/chat_swim.png)
 
-# 四. 项目团队
+# IV. Project Team
 - DylanJinx
 - Pupil1999
 - ymjrcc
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
